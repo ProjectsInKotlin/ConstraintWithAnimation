@@ -17,7 +17,9 @@ class MainActivity : AppCompatActivity() {
         val constraintSet1 = ConstraintSet()
         constraintSet1.clone(constraintLayoutId)
         val constraintSet2 = ConstraintSet()
-        constraintSet2.clone(this, R.layout.activity_main_alt)
+       // constraintSet2.clone(this, R.layout.activity_main_alt) // animation based on two views
+        constraintSet2.clone(constraintLayoutId) //animation based on one cloned view and slightly edited (centerVertically...)
+        constraintSet1.centerVertically(R.id.MA_view, 0)
 
         var changed = false
         findViewById<Button>(R.id.MA_button).setOnClickListener {
