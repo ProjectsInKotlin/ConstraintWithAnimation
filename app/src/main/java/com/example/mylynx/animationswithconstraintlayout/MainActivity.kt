@@ -3,6 +3,7 @@ package com.example.mylynx.animationswithconstraintlayout
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.constraint.ConstraintSet
+import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,7 +25,11 @@ class MainActivity : AppCompatActivity() {
         var changed = false
         findViewById<Button>(R.id.MA_button).setOnClickListener {
 
-            TransitionManager.beginDelayedTransition(constraintLayoutId)
+            //changes animation duration
+            val transition = AutoTransition()
+            transition.duration = 1000
+
+            TransitionManager.beginDelayedTransition(constraintLayoutId, transition)
             val constraint = if (changed) constraintSet1 else constraintSet2
             constraint.applyTo(constraintLayoutId)
             changed = !changed
